@@ -5,4 +5,3 @@
 [INFO]: GLSL Version 4.50 - Build 25.20.100.6446
 [INFO]: Created The_Glitch: 
 [INFO]: Created Scene3: 
-[INFO]: Deleting the GameSceneManager

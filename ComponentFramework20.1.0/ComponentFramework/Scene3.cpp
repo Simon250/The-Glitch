@@ -26,13 +26,13 @@ bool Scene3::OnCreate() {
 		return false;
 	}
 	camera->setSkyBox(skyBox);
-	lightSource = Vec3(0.0, 0.0, 10.0);
+	lightSource = Vec3(0.0, 0.0, 0.0);
 
 	if (ObjLoader::loadOBJ("meshes/Cube.obj") == false) {
 		return false;
 	}
 	meshPtr = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
-	shaderPtr = new Shader("phongVert.glsl", "phongFrag.glsl");
+	shaderPtr = new Shader("SkyBoxVert.glsl", "SkyBoxFrag.glsl");
 	texturePtr = new Texture();
 	if (meshPtr == nullptr || shaderPtr == nullptr || texturePtr == nullptr) {
 		Debug::FatalError("Couldn't create game object assets", __FILE__, __LINE__);
@@ -50,8 +50,8 @@ bool Scene3::OnCreate() {
 		Debug::FatalError("GameObject could not be created", __FILE__, __LINE__);
 		return false;
 	}
-	demoObject->setPos(Vec3(0.0, 0.0, 0.0));
-	demoObject->setModelMatrix(MMath::translate(demoObject->getPos()) * MMath::rotate(30.0f, Vec3(0.0f, 1.0f, 0.0f)));
+	demoObject->setPos(Vec3(0.0, 0.0, -10.0));
+	demoObject->setModelMatrix(MMath::translate(demoObject->getPos()) * MMath::rotate(70.0f, Vec3(0.0f, 1.0f, 0.0f)));
 
 	return true;
 }
@@ -61,8 +61,17 @@ void Scene3::HandleEvents(const SDL_Event& sdlEvent) {
 }
 
 void Scene3::Update(const float deltaTime) {
-	demoObject->Update(deltaTime);
+
+	demoObject->setAngVel(5.0f);
+	Physics::RigidBodyRotation(&demoObject, deltaTime);
+	Physics::SimpleNewtonMotion(&demoObject, deltaTime);
+
+	demoObject->getModelMatrix(MMath::translate(demoObject->getPos()) * MMath::rotate(demoObject->getAng(), Vec3(0.0f, 1.0f, 0.0f)));
 	
+
+
+	demoObject->Update(deltaTime);
+	camera->Update(deltaTime);
 }
 
 void Scene3::Render() const {

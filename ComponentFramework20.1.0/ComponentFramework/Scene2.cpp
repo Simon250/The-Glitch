@@ -65,13 +65,13 @@ bool Scene2::OnCreate() {
 	orbObj[0]->setModelMatrix(MMath::translate(orbObj[0]->getPos()));
 
 	orbObj[1]->setPos(Vec3(-8.0, 0.0, -10.0));
-	orbObj[1]->setModelMatrix(MMath::translate(orbObj[0]->getPos()));
+	orbObj[1]->setModelMatrix(MMath::translate(orbObj[1]->getPos()));
 
 	orbObj[2]->setPos(Vec3(-12.0, 0.0, -10.0));
-	orbObj[2]->setModelMatrix(MMath::translate(orbObj[0]->getPos()));
+	orbObj[2]->setModelMatrix(MMath::translate(orbObj[2]->getPos()));
 
 	orbObj[3]->setPos(Vec3(-14.0, 0.0, -10.0));
-	orbObj[3]->setModelMatrix(MMath::translate(orbObj[0]->getPos()));
+	orbObj[3]->setModelMatrix(MMath::translate(orbObj[3]->getPos()));
 
 	return true;
 }

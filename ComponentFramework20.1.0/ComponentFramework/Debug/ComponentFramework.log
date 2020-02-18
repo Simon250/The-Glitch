@@ -1,2 +1,7 @@
-﻿  Camera.cpp
-  ComponentFramework.vcxproj -> C:\Users\SPC\Desktop\ComponentFramework20.1.0\Debug\ComponentFramework.exe
+﻿  Scene3.cpp
+D:\GGJ2020Inventory(0.2)-master\The-Glitch\ComponentFramework20.1.0\ComponentFramework\Scene3.cpp(66,51): error C2664: 'void Physics::RigidBodyRotation(PhysicsObject &,const float)': cannot convert argument 1 from 'DemoObject **' to 'PhysicsObject &'
+D:\GGJ2020Inventory(0.2)-master\The-Glitch\ComponentFramework20.1.0\ComponentFramework\Physics.h(9,14): message : see declaration of 'Physics::RigidBodyRotation'
+D:\GGJ2020Inventory(0.2)-master\The-Glitch\ComponentFramework20.1.0\ComponentFramework\Scene3.cpp(67,52): error C2664: 'void Physics::SimpleNewtonMotion(PhysicsObject &,const float)': cannot convert argument 1 from 'DemoObject **' to 'PhysicsObject &'
+D:\GGJ2020Inventory(0.2)-master\The-Glitch\ComponentFramework20.1.0\ComponentFramework\Physics.h(8,14): message : see declaration of 'Physics::SimpleNewtonMotion'
+D:\GGJ2020Inventory(0.2)-master\The-Glitch\ComponentFramework20.1.0\ComponentFramework\Scene3.cpp(69,129): error C2660: 'DemoObject::getModelMatrix': function does not take 1 arguments
+D:\GGJ2020Inventory(0.2)-master\The-Glitch\ComponentFramework20.1.0\ComponentFramework\DemoObject.h(36,24): message : see declaration of 'DemoObject::getModelMatrix'
