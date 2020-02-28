@@ -58,7 +58,7 @@ bool The_Glitch::OnCreate() {
 	}
 
 	for (int i = 0; i < numWalls; i++) {
-		wallSegment[i] = new DemoObject(meshPtr2, shaderPtr, texturePtr);
+		wallSegment[i] = new WallSegment(meshPtr2, shaderPtr, texturePtr);
 		if (wallSegment == nullptr) {
 			Debug::FatalError("Wall Segment could not be created", __FILE__, __LINE__);
 			return false;
@@ -99,6 +99,7 @@ bool The_Glitch::OnCreate() {
 	for (int i = 0; i < numWalls; i++) {
 		wallSegment[i]->setModelMatrix(MMath::rotate(0.0f, Vec3(1.0f, 0.0f, 0.0f)) * MMath::scale(0.4f, 0.4f, 0.4f));
 	}
+
 	lightSource = Vec3(0.0, 0.0, -9.0);
 
 	return true;

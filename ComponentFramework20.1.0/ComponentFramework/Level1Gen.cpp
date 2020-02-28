@@ -25,7 +25,7 @@ Level1Gen::Level1Gen() {
 		Vec3(0.0f, 16.0f, 0.0f);//door position
 
 	room3[0] = Vec3(-2.0f, 0.0f, 0.0f), Vec3(2.0f, 0.0f, 0.0f), Vec3(-2.0f, 2.0f, 0.0f), Vec3(2.0f, 2.0f, 0.0f), Vec3(-2.0f, 4.0f, 0.0f), Vec3(2.0f, 4.0f, 0.0f), Vec3(-2.0f, 6.0f, 0.0f), Vec3(2.0f, 6.0f, 0.0f), Vec3(-2.0f, 8.0f, 0.0f), Vec3(2.0f, 8.0f, 0.0f), Vec3(-2.0f, 10.0f, 0.0f), Vec3(2.0f, 10.0f, 0.0f), Vec3(-2.0f, 12.0f, 0.0f), Vec3(2.0f, 12.0f, 0.0f), Vec3(-2.0f, 14.0f, 0.0f), Vec3(2.0f, 14.0f, 0.0f), Vec3(-2.0f, 16.0f, 0.0f), Vec3(2.0f, 16.0f, 0.0f), Vec3(-2.0f, 18.0f, 0.0f), Vec3(2.0f, 18.0f, 0.0f), Vec3(-2.0f, 20.0f, 0.0f), Vec3(2.0f, 20.0f, 0.0f), Vec3(-2.0f, 22.0f, 0.0f), Vec3(2.0f, 22.0f, 0.0f), 
-		Vec3(0.0f, 22.0f, 0.0f);
+		Vec3(0.0f, 22.0f, 0.0f);//door position
 
 	room4[0] = Vec3();
 
@@ -103,7 +103,7 @@ int Level1Gen::RoomGenerations() {
 #undef RNMX
 }
 
-void Level1Gen::RoomPlacement(Vec3 d, Vec3 doorPos, DemoObject* wallSegment) {
+void Level1Gen::RoomPlacement(Vec3 d, Vec3 doorPos, WallSegment* wallSegment) {
 	float angleD;
 	int temp;
 	Matrix4 rotation;
@@ -130,7 +130,7 @@ void Level1Gen::RoomPlacement(Vec3 d, Vec3 doorPos, DemoObject* wallSegment) {
 			
 			}
 			else {
-				temp += roomsBlockNum[roomsgen[i]];
+				temp += roomsBlockNum[i];
 			}
 		}
 		temp -= roomsBlockNum[1];
@@ -143,6 +143,7 @@ void Level1Gen::RoomPlacement(Vec3 d, Vec3 doorPos, DemoObject* wallSegment) {
 
 		for (int i = 0; i < 25; i++) {
 			wallSegment[temp + i].setPos((rotation * room1[i]) + doorPos);
+			wallSegment[temp + i].partOfRoom = 1;
 		}
 		//set door pos to rotation * room2[26/27/28] + doorPos
 
@@ -168,7 +169,7 @@ void Level1Gen::RoomPlacement(Vec3 d, Vec3 doorPos, DemoObject* wallSegment) {
 
 			}
 			else {
-				temp += roomsBlockNum[roomsgen[i]];
+				temp += roomsBlockNum[i];
 			}
 		}
 		temp -= roomsBlockNum[2];
@@ -181,6 +182,7 @@ void Level1Gen::RoomPlacement(Vec3 d, Vec3 doorPos, DemoObject* wallSegment) {
 
 		for (int i = 0; i < 52; i++) {
 			wallSegment[temp + i].setPos((rotation * room2[i]) + doorPos);
+			wallSegment[temp + i].partOfRoom = 2;
 		}
 		//doors will have the last of the arrays for room positions and will be in accending y
 		//set door pos to rotation * room2[52] + doorPos
@@ -215,7 +217,7 @@ void Level1Gen::RoomPlacement(Vec3 d, Vec3 doorPos, DemoObject* wallSegment) {
 
 			}
 			else {
-				temp += roomsBlockNum[roomsgen[i]];
+				temp += roomsBlockNum[i];
 			}
 		}
 		temp -= roomsBlockNum[3];
@@ -228,6 +230,7 @@ void Level1Gen::RoomPlacement(Vec3 d, Vec3 doorPos, DemoObject* wallSegment) {
 
 		for (int i = 0; i < 23; i++) {
 			wallSegment[temp + i].setPos((rotation * room3[i]) + doorPos);
+			wallSegment[temp + i].partOfRoom = 3;
 		}
 		//set door pos to rotation * room2[24] + doorPos
 
@@ -241,7 +244,7 @@ void Level1Gen::RoomPlacement(Vec3 d, Vec3 doorPos, DemoObject* wallSegment) {
 
 			}
 			else {
-				temp += roomsBlockNum[roomsgen[i]];
+				temp += roomsBlockNum[i];
 			}
 		}
 		temp -= roomsBlockNum[4];
@@ -254,6 +257,7 @@ void Level1Gen::RoomPlacement(Vec3 d, Vec3 doorPos, DemoObject* wallSegment) {
 
 		for (int i = 0; i < 23; i++) {
 			wallSegment[temp + i].setPos((rotation * room4[i]) + doorPos);
+			wallSegment[temp + i].partOfRoom = 4;
 		}
 		//set door pos to rotation * room2[24] + doorPos
 

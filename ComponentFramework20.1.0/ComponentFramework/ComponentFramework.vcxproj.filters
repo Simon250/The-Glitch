@@ -117,6 +117,9 @@
     <ClCompile Include="Trackball.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="WallSegment.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Debug.h">
@@ -213,6 +216,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Trackball.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WallSegment.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -3,6 +3,7 @@
 #include "Vector.h"
 #include "Scene.h"
 #include "Plane.h"
+#include "WallSegment.h"
 
 using namespace MATH;
 
@@ -20,7 +21,7 @@ class The_Glitch : public Scene
 private:
 	Camera *camera;
 	DemoObject *playerModel;
-	DemoObject *wallSegment[11];
+	WallSegment *wallSegment[11];
 	int numWalls;
 	Vec3 lightSource;
 	Mesh *meshPtr1;
