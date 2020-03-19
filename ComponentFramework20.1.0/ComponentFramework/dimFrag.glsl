@@ -9,7 +9,7 @@ void main() {
 	const vec4 kd = vec4(0.02, 0.02, 0.02, 0.0); /// const means it cannot be changed just like C++
 	const vec4 ka = 0.0 * kd;
 	
-	float diff = max(dot(vertNormal, lightDir), 1.0);
+	float diff = max(dot(vertNormal, lightDir), 0.0);
 	/// Reflection is based incedent which means a vector from the light source
 	/// not the direction to the light source
 	vec3 reflection = normalize(reflect(-lightDir, vertNormal));

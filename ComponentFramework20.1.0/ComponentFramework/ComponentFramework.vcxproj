@@ -124,6 +124,7 @@
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Debug.cpp" />
+    <ClCompile Include="Door.cpp" />
     <ClCompile Include="GameObject.h" />
     <ClCompile Include="DemoObject.cpp" />
     <ClCompile Include="Level1Gen.cpp" />
@@ -149,13 +150,13 @@
     <ClCompile Include="Trackball.cpp" />
     <ClCompile Include="Viper.cpp" />
     <ClCompile Include="VMath.cpp" />
-    <ClCompile Include="WallSegment.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Debug.h" />
     <ClInclude Include="DemoObject.h" />
+    <ClInclude Include="Door.h" />
     <ClInclude Include="Level1Gen.h" />
     <ClInclude Include="Physics.h" />
     <ClInclude Include="PhysicsObject.h" />
@@ -184,7 +185,6 @@
     <ClInclude Include="Vector.h" />
     <ClInclude Include="Viper.h" />
     <ClInclude Include="VMath.h" />
-    <ClInclude Include="WallSegment.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>

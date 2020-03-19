@@ -16,14 +16,13 @@ class SkyBox : public GameObject
 {
 
 private:
-
 	GLuint skyBoxTextureID;
+	bool loadSkyBoxTextures(const char* posX, const char* negX, const char* posY, const char* negY, const char* posZ, const char* negZ);
+	DemoObject* demoObject;
 	Mesh* meshPtr;
 	Shader* shaderPtr;
-
+	Texture* texturePtr;
 public:
-
-	bool loadSkyBoxTextures(const char* posX, const char* negX, const char* posY, const char* negY, const char* posZ, const char* negZ);
 	inline Shader* getShader() { return shaderPtr; }
 	void Render() const;
 	bool OnCreate();

@@ -1,2 +1,36 @@
-﻿  WallSegment.cpp
-  ComponentFramework.vcxproj -> D:\GGJ2020Inventory(0.2)-master\The-Glitch\ComponentFramework20.1.0\Debug\ComponentFramework.exe
+﻿  Camera.cpp
+  Debug.cpp
+  Door.cpp
+  GameObject.h
+  DemoObject.cpp
+  Level1Gen.cpp
+C:\Users\Night\Downloads\College Shit\Winter 2020\The-Glitch-master\ComponentFramework20.1.0\ComponentFramework\Level1Gen.cpp(76,10): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+  Physics.cpp
+  PhysicsObject.cpp
+  Scene2.cpp
+  Scene3.cpp
+  Scene4.cpp
+  Scene5.cpp
+  Scene6.cpp
+  SceneManager.cpp
+  Main.cpp
+  Mesh.cpp
+  MMath.cpp
+  ObjLoader.cpp
+  Scene0.cpp
+  Scene1.cpp
+  Generating Code...
+C:\Users\Night\Downloads\College Shit\Winter 2020\The-Glitch-master\ComponentFramework20.1.0\ComponentFramework\Door.cpp(32): error C4716: 'OnCreate': must return a value
+  Compiling...
+  Shader.cpp
+  SkyBox.cpp
+  Texture.cpp
+  The_Glitch.cpp
+  Timer.cpp
+  Trackball.cpp
+C:\Users\Night\Downloads\College Shit\Winter 2020\The-Glitch-master\ComponentFramework20.1.0\ComponentFramework\Trackball.cpp(52,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  Viper.cpp
+  VMath.cpp
+  Window.cpp
+  Generating Code...
+C:\Users\Night\Downloads\College Shit\Winter 2020\The-Glitch-master\ComponentFramework20.1.0\ComponentFramework\SkyBox.cpp(93): warning C4715: 'SkyBox::OnCreate': not all control paths return a value

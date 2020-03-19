@@ -70,10 +70,8 @@ bool SkyBox::loadSkyBoxTextures(const char* posX, const char* negX, const char* 
 }
 
 void SkyBox::Render() const {
-	glBindTexture(GL_TEXTURE_CUBE_MAP, skyBoxTextureID);
+	
 	meshPtr->Render();
-	glBindTexture(GL_TEXTURE_CUBE_MAP, 0);
-
 }
 
 bool SkyBox::OnCreate() {
@@ -94,10 +92,6 @@ bool SkyBox::OnCreate() {
 	if (status == false) return false;
 }
 
-void SkyBox::OnDestroy() {
-	if (meshPtr) delete meshPtr;
-	if (shaderPtr) delete shaderPtr;
-	glDeleteTextures(1, &skyBoxTextureID);
-}
+void SkyBox::OnDestroy() {}
 void SkyBox::Update(const float deltaTime) {}
 void SkyBox::HandleEvents(const SDL_Event& event) {}

@@ -14,9 +14,6 @@ Camera::Camera() {
 Camera::~Camera() {}
 
 void Camera::Update(const float deltaTime) {
-	if (skyBox) {
-		skyBox->Update(deltaTime);
-	}
 }
 
 void Camera::HandleEvents(const SDL_Event& event) {
@@ -28,8 +25,8 @@ void Camera::Render() const {
 		glDisable(GL_CULL_FACE);
 		glUseProgram(skyBox->getShader()->getProgram());
 		glUniformMatrix4fv(skyBox->getShader()->getUniformID("projectionMatrix"), 1, GL_FALSE, projection);
-		glUniformMatrix4fv(skyBox->getShader()->getUniformID("cameraRotationMatrix"), 1, GL_FALSE, rotate);
-		glUniformMatrix4fv(skyBox->getShader()->getUniformID("skyBoxTexture"), 1, GL_FALSE, Matrix4());
+		glUniformMatrix4fv(skyBox->getShader()->getUniformID("viewMatrix"), 1, GL_FALSE, rotate);
+		glUniformMatrix4fv(skyBox->getShader()->getUniformID("modelMatrix"), 1, GL_FALSE, Matrix4());
 		skyBox->Render();
 		glUseProgram(0);
 		glEnable(GL_DEPTH_TEST);

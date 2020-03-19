@@ -117,7 +117,7 @@
     <ClCompile Include="Trackball.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="WallSegment.cpp">
+    <ClCompile Include="Door.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -218,7 +218,7 @@
     <ClInclude Include="Trackball.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="WallSegment.h">
+    <ClInclude Include="Door.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

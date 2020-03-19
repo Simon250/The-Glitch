@@ -1,5 +1,3 @@
-#ifndef LEVEL1GEN
-#define LEVEL1GEN
 #include <glew.h>
 #include <iostream>
 #include "Window.h"
@@ -13,10 +11,6 @@
 #include "MMath.h"
 #include "Debug.h"
 #include "Physics.h"
-#include "WallSegment.h"
-
-class WallSegment;
-
 class Level1Gen
 {
 public:
@@ -24,7 +18,7 @@ public:
 	~Level1Gen();
 
 	int RoomGenerations();
-	void RoomPlacement(Vec3 d, Vec3 doorPoss, WallSegment* wallSegment);
+	void RoomPlacement(Vec3 d, Vec3 doorPoss, DemoObject* wallSegment);
 	
 private:
 	float curRoom;
@@ -37,4 +31,4 @@ private:
 	Vec3 room3[25];
 	Vec3 room4[30];
 };
-#endif
+
