@@ -63,10 +63,10 @@ void Scene3::HandleEvents(const SDL_Event& sdlEvent) {
 void Scene3::Update(const float deltaTime) {
 
 	demoObject->setAngVel(5.0f);
-	Physics::RigidBodyRotation(&demoObject, deltaTime);
-	Physics::SimpleNewtonMotion(&demoObject, deltaTime);
+	Physics::RigidBodyRotation(*demoObject, deltaTime);
+	Physics::SimpleNewtonMotion(*demoObject, deltaTime);
 
-	demoObject->getModelMatrix(MMath::translate(demoObject->getPos()) * MMath::rotate(demoObject->getAng(), Vec3(0.0f, 1.0f, 0.0f)));
+	demoObject->setModelMatrix(MMath::translate(demoObject->getPos()) * MMath::rotate(demoObject->getAng(), Vec3(0.0f, 1.0f, 0.0f)));
 	
 
 

@@ -16,14 +16,14 @@ bool WallSegment::OnCreate() { return true; } /// Just a stub
 void WallSegment::OnDestroy() {}				  /// Just a stub
 void WallSegment::Update(float deltaTime_) {
 
-	if (pos.x > 20 || pos.y > 20 || pos.x < -20 || pos.y < -20) {
+	if (pos.x > 6 || pos.y > 6 || pos.x < -6 || pos.y < -6) {
 		isRend = false;
 	}
 	else {
 		isRend = true;
 	}
 
-	this->setModelMatrix(MMath::rotate(0.0f, Vec3(1.0f, 0.0f, 0.0f)) * MMath::scale(0.4f, 0.4f, 0.4f));
+	this->setModelMatrix(MMath::translate(pos) * MMath::rotate(0.0f, Vec3(1.0f, 0.0f, 0.0f)) * MMath::scale(1.0f, 1.0f, 2.0f));
 
 }
 

@@ -14,6 +14,9 @@
 #include "Debug.h"
 #include "Physics.h"
 #include "WallSegment.h"
+
+class WallSegment;
+
 class Level1Gen
 {
 public:

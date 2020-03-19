@@ -21,7 +21,7 @@ class The_Glitch : public Scene
 private:
 	Camera *camera;
 	DemoObject *playerModel;
-	WallSegment *wallSegment[11];
+	WallSegment *wallSegment[65];
 	int numWalls;
 	Vec3 lightSource;
 	Mesh *meshPtr1;
