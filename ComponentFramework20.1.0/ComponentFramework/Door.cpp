@@ -26,22 +26,22 @@ bool Door::openCloseDoor(bool openState_)
 	return openState;
 }
 
-bool OnCreate()
+bool Door::OnCreate()
+{
+	return true;
+}
+
+void Door::OnDestroy()
 {
 
 }
 
-void OnDestroy()
+void Door::HandleEvents(const SDL_Event& event)
 {
 
 }
 
-void HandleEvents(const SDL_Event& event)
-{
-
-}
-
-void Update(const float deltaTime)
+void Door::Update(const float deltaTime)
 {
 
 }
