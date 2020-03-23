@@ -124,6 +124,7 @@
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Debug.cpp" />
+    <ClCompile Include="Door.cpp" />
     <ClCompile Include="GameObject.h" />
     <ClCompile Include="DemoObject.cpp" />
     <ClCompile Include="Level1Gen.cpp" />
@@ -156,6 +157,7 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Debug.h" />
     <ClInclude Include="DemoObject.h" />
+    <ClInclude Include="Door.h" />
     <ClInclude Include="Level1Gen.h" />
     <ClInclude Include="Physics.h" />
     <ClInclude Include="PhysicsObject.h" />
