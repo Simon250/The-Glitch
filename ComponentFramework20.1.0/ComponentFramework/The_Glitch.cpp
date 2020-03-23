@@ -21,7 +21,7 @@ The_Glitch::The_Glitch() : camera(nullptr), playerModel(nullptr), meshPtr1(nullp
 The_Glitch::~The_Glitch() {}
 
 bool The_Glitch::OnCreate() {
-	numWalls = 65;
+	numWalls = 165;
 	camera = new Camera();
 
 	if (ObjLoader::loadOBJ("meshes/Mario.obj") == false) {
@@ -97,6 +97,13 @@ bool The_Glitch::OnCreate() {
 
 	//front wall
 	wallSegment[10]->setPos(Vec3(0.0f, 2.0f, -10.0f));
+
+	//Floor
+	wallSegment[65]->setPos(Vec3(0.0f, -2.0f, -12.0f));
+	wallSegment[66]->setPos(Vec3(2.0f, -2.0f, -12.0f));
+	wallSegment[67]->setPos(Vec3(0.0f, 0.0f, -12.0f));
+	wallSegment[68]->setPos(Vec3(2.0f, 0.0f, -12.0f));
+	wallSegment[69]->setPos(Vec3(2.0f, 2.0f, -12.0f));
 	/*Door Explanation room
 		
 		~~~ ~~~
@@ -131,6 +138,29 @@ bool The_Glitch::OnCreate() {
 	wallSegment[28]->setPos(Vec3(0.0f, 14.0f, -10.0f));
 	wallSegment[29]->setPos(Vec3(2.0f, 14.0f, -10.0f));
 	wallSegment[30]->setPos(Vec3(4.0f, 14.0f, -10.0f));
+	//floor
+	wallSegment[70]->setPos(Vec3(2.0f, 4.0f, -12.0f));
+	wallSegment[71]->setPos(Vec3(2.0f, 6.0f, -12.0f));
+	wallSegment[72]->setPos(Vec3(0.0f, 6.0f, -12.0f));
+	wallSegment[73]->setPos(Vec3(-2.0f, 6.0f, -12.0f));
+	wallSegment[74]->setPos(Vec3(-4.0f, 6.0f, -12.0f));
+	wallSegment[75]->setPos(Vec3(-6.0f, 6.0f, -12.0f));
+	wallSegment[76]->setPos(Vec3(-6.0f, 8.0f, -12.0f));
+	wallSegment[77]->setPos(Vec3(-4.0f, 8.0f, -12.0f));
+	wallSegment[78]->setPos(Vec3(-2.0f, 8.0f, -12.0f));
+	wallSegment[79]->setPos(Vec3(0.0f, 8.0f, -12.0f));
+	wallSegment[80]->setPos(Vec3(2.0f, 8.0f, -12.0f));
+	wallSegment[81]->setPos(Vec3(2.0f, 10.0f, -12.0f));
+	wallSegment[82]->setPos(Vec3(0.0f, 10.0f, -12.0f));
+	wallSegment[83]->setPos(Vec3(-2.0f, 10.0f, -12.0f));
+	wallSegment[84]->setPos(Vec3(-4.0f, 10.0f, -12.0f));
+	wallSegment[85]->setPos(Vec3(-6.0f, 10.0f, -12.0f));
+	wallSegment[86]->setPos(Vec3(-6.0f, 12.0f, -12.0f));
+	wallSegment[87]->setPos(Vec3(-4.0f, 12.0f, -12.0f));
+	wallSegment[88]->setPos(Vec3(-2.0f, 12.0f, -12.0f));
+	wallSegment[89]->setPos(Vec3(0.0f, 12.0f, -12.0f));
+	wallSegment[90]->setPos(Vec3(2.0f, 12.0f, -12.0f));
+	wallSegment[91]->setPos(Vec3(-2.0f, 14.0f, -12.0f));
 	/*Enemy Explanation Room
 		
 		~|/|~
@@ -185,12 +215,56 @@ bool The_Glitch::OnCreate() {
 	wallSegment[62]->setPos(Vec3(8.0f, 26.0f, -10.0f));
 	wallSegment[63]->setPos(Vec3(10.0f, 26.0f, -10.0f));
 	wallSegment[64]->setPos(Vec3(12.0f, 26.0f, -10.0f));
+	//floor
+	wallSegment[92]->setPos(Vec3(-4.0f, 16.0f, -12.0f));
+	wallSegment[93]->setPos(Vec3(-2.0f, 16.0f, -12.0f));
+	wallSegment[94]->setPos(Vec3(0.0f, 16.0f, -12.0f));
+	wallSegment[95]->setPos(Vec3(-4.0f, 18.0f, -12.0f));
+	wallSegment[96]->setPos(Vec3(-2.0f, 18.0f, -12.0f));
+	wallSegment[97]->setPos(Vec3(0.0f, 18.0f, -12.0f));
+	wallSegment[98]->setPos(Vec3(-4.0f, 20.0f, -12.0f));
+	wallSegment[99]->setPos(Vec3(-2.0f, 20.0f, -12.0f));
+	wallSegment[100]->setPos(Vec3(0.0f, 20.0f, -12.0f));
+	wallSegment[101]->setPos(Vec3(-4.0f, 22.0f, -12.0f));
+	wallSegment[102]->setPos(Vec3(-2.0f, 22.0f, -12.0f));
+	wallSegment[103]->setPos(Vec3(0.0f, 22.0f, -12.0f));
+	wallSegment[104]->setPos(Vec3(2.0f, 22.0f, -12.0f));
+	wallSegment[105]->setPos(Vec3(4.0f, 22.0f, -12.0f));
+	wallSegment[106]->setPos(Vec3(6.0f, 22.0f, -12.0f));
+	wallSegment[107]->setPos(Vec3(8.0f, 22.0f, -12.0f));
+	wallSegment[108]->setPos(Vec3(10.0f, 22.0f, -12.0f));
+	wallSegment[109]->setPos(Vec3(-4.0f, 24.0f, -12.0f));
+	wallSegment[110]->setPos(Vec3(-2.0f, 24.0f, -12.0f));
+	wallSegment[111]->setPos(Vec3(0.0f, 24.0f, -12.0f));
+	wallSegment[112]->setPos(Vec3(2.0f, 24.0f, -12.0f));
+	wallSegment[113]->setPos(Vec3(4.0f, 24.0f, -12.0f));
+	wallSegment[114]->setPos(Vec3(6.0f, 24.0f, -12.0f));
+	wallSegment[115]->setPos(Vec3(8.0f, 24.0f, -12.0f));
+	wallSegment[116]->setPos(Vec3(10.0f, 24.0f, -12.0f));
+	wallSegment[117]->setPos(Vec3(-4.0f, 26.0f, -12.0f));
+	wallSegment[118]->setPos(Vec3(-2.0f, 26.0f, -12.0f));
+	wallSegment[119]->setPos(Vec3(0.0f, 26.0f, -12.0f));
+	wallSegment[120]->setPos(Vec3(-4.0f, 28.0f, -12.0f));
+	wallSegment[121]->setPos(Vec3(-2.0f, 28.0f, -12.0f));
+	wallSegment[122]->setPos(Vec3(0.0f, 28.0f, -12.0f));
+	wallSegment[123]->setPos(Vec3(-4.0f, 30.0f, -12.0f));
+	wallSegment[124]->setPos(Vec3(-2.0f, 30.0f, -12.0f));
+	wallSegment[125]->setPos(Vec3(0.0f, 30.0f, -12.0f));
+	wallSegment[126]->setPos(Vec3(-4.0f, 32.0f, -12.0f));
+	wallSegment[127]->setPos(Vec3(-2.0f, 32.0f, -12.0f));
+	wallSegment[128]->setPos(Vec3(0.0f, 32.0f, -12.0f));
+	wallSegment[129]->setPos(Vec3(-4.0f, 34.0f, -12.0f));
+	wallSegment[130]->setPos(Vec3(-2.0f, 34.0f, -12.0f));
+	wallSegment[131]->setPos(Vec3(0.0f, 34.0f, -12.0f));
+	wallSegment[132]->setPos(Vec3(-2.0f, 36.0f, -12.0f));
+
+
 	//Inactive Glitch at (10.0f, 23.0f, -10.0f)
 	//door at (-2.0f, 36.0f, -10.0f)
 
 	//Tutorial Level Set Up End
 
-	lightSource = Vec3(0.0, 0.0, -9.0);
+	lightSource = Vec3(0.0, 0.0, -10.0);
 
 	return true;
 }

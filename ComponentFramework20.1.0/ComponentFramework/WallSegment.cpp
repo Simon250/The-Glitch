@@ -16,7 +16,7 @@ bool WallSegment::OnCreate() { return true; } /// Just a stub
 void WallSegment::OnDestroy() {}				  /// Just a stub
 void WallSegment::Update(float deltaTime_) {
 
-	if (pos.x > 6 || pos.y > 6 || pos.x < -6 || pos.y < -6) {
+	if (pos.x > 6.2 || pos.y > 6.2 || pos.x < -6.2 || pos.y < -6.2) {
 		isRend = false;
 	}
 	else {
