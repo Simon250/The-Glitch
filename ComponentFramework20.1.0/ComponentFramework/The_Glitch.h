@@ -15,6 +15,7 @@ class DemoObject;
 class Mesh;
 class Shader;
 class Texture;
+class Door;
 
 class The_Glitch : public Scene
 {
@@ -23,10 +24,13 @@ private:
 	Camera *camera;
 	DemoObject *playerModel;
 	WallSegment *wallSegment[165];
+	Door *doors[10];
 	int numWalls;
+	int numDoors;
 	Vec3 lightSource;
 	Mesh *meshPtr1;
 	Mesh *meshPtr2;
+	Mesh* meshPtr3;
 	Shader *shaderPtr;
 	Texture *texturePtr;
 	float playerSpeed;

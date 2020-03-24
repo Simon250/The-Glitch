@@ -22,6 +22,7 @@ The_Glitch::~The_Glitch() {}
 
 bool The_Glitch::OnCreate() {
 	numWalls = 165;
+	numDoors = 10;
 	camera = new Camera();
 
 	if (ObjLoader::loadOBJ("meshes/Mario.obj") == false) {
@@ -67,6 +68,26 @@ bool The_Glitch::OnCreate() {
 
 	for (int i = 0; i < numWalls; i++) {
 		wallSegment[i]->setPos(Vec3(100000.0f, 0.0f, -10.0f));
+	}
+
+	if (ObjLoader::loadOBJ("meshes/Cube.obj") == false) {
+		return false;
+	}
+	meshPtr3 = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
+	if (meshPtr3 == nullptr || shaderPtr == nullptr || texturePtr == nullptr) {
+		Debug::FatalError("Couldn't create game object assets", __FILE__, __LINE__);
+		return false;
+	}
+
+	for (int i = 0; i < numDoors; i++) {
+		doors[i] = new Door(meshPtr3, shaderPtr, nullptr);
+		if (doors[i] == nullptr) {
+			Debug::FatalError("Wall Segment could not be created", __FILE__, __LINE__);
+			return false;
+		}
+	}
+	for (int i = 0; i < numDoors; i++) {
+		doors[i]->setPos(Vec3(100000.0f, 0.0f, -10.0f));
 	}
 
 	playerModel->setModelMatrix(MMath::rotate(90.0f, Vec3(1.0f, 0.0f, 0.0f)) * MMath::scale(0.4f, 0.4f, 0.4f));
@@ -260,9 +281,9 @@ bool The_Glitch::OnCreate() {
 
 
 	//Inactive Glitch at (10.0f, 23.0f, -10.0f)
-	//door at (-2.0f, 36.0f, -10.0f)
+	doors[0]->setPos(Vec3(-2.0f, 36.0f, -10.0f));
 
-	//Tutorial Level Set Up End
+	//Tutorial Level Set Up End, total number of blocks used 132, total number of doors used 1, total number of glitch used 1
 
 	lightSource = Vec3(0.0, 0.0, -10.0);
 
@@ -273,11 +294,15 @@ void The_Glitch::OnDestroy() {
 	if (camera) delete camera, camera = nullptr;
 	if (meshPtr1) delete meshPtr1, meshPtr1 = nullptr;
 	if (meshPtr2) delete meshPtr2, meshPtr2 = nullptr;
+	if (meshPtr3) delete meshPtr3, meshPtr3 = nullptr;
 	if (texturePtr) delete texturePtr, texturePtr = nullptr;
 	if (shaderPtr) delete shaderPtr, shaderPtr = nullptr;
 	if (playerModel) delete playerModel, playerModel = nullptr;
 	for (int i = 0; i < numWalls; i++) {
 		if (wallSegment[i]) delete wallSegment[i], wallSegment[i] = nullptr;
+	}
+	for (int i = 0; i < numDoors; i++) {
+		if (doors[i]) delete doors[i], doors[i] = nullptr;
 	}
 }
 
@@ -290,6 +315,12 @@ void The_Glitch::HandleEvents(const SDL_Event& sdlEvent) {
 			wallSegment[i]->setVel(Vec3(0.0f, -15.0f, 0.0f));
 			Physics::SimpleNewtonMotion(*wallSegment[i], deltaTime);
 			wallSegment[i]->setModelMatrix(MMath::translate(wallSegment[i]->getPos()));
+			
+		}
+		for (int i = 0; i < numDoors; i++) {
+			doors[i]->setVel(Vec3(0.0f, -15.0f, 0.0f));
+			Physics::SimpleNewtonMotion(*doors[i], deltaTime);
+			doors[i]->setModelMatrix(MMath::translate(doors[i]->getPos()));
 		}
 
 		Debug::Info("Moved Up", __FILE__, __LINE__);
@@ -301,6 +332,12 @@ void The_Glitch::HandleEvents(const SDL_Event& sdlEvent) {
 			wallSegment[i]->setVel(Vec3(15.0f, 0.0f, 0.0f));
 			Physics::SimpleNewtonMotion(*wallSegment[i], deltaTime);
 			wallSegment[i]->setModelMatrix(MMath::translate(wallSegment[i]->getPos()));
+
+		}
+		for (int i = 0; i < numDoors; i++) {
+			doors[i]->setVel(Vec3(15.0f, 0.0f, 0.0f));
+			Physics::SimpleNewtonMotion(*doors[i], deltaTime);
+			doors[i]->setModelMatrix(MMath::translate(doors[i]->getPos()));
 		}
 
 		Debug::Info("Moved Left", __FILE__, __LINE__);
@@ -312,6 +349,12 @@ void The_Glitch::HandleEvents(const SDL_Event& sdlEvent) {
 			wallSegment[i]->setVel(Vec3(0.0f, 15.0f, 0.0f));
 			Physics::SimpleNewtonMotion(*wallSegment[i], deltaTime);
 			wallSegment[i]->setModelMatrix(MMath::translate(wallSegment[i]->getPos()));
+		
+		}
+		for (int i = 0; i < numDoors; i++) {
+			doors[i]->setVel(Vec3(0.0f, 15.0f, 0.0f));
+			Physics::SimpleNewtonMotion(*doors[i], deltaTime);
+			doors[i]->setModelMatrix(MMath::translate(doors[i]->getPos()));
 		}
 
 		Debug::Info("Moved Down", __FILE__, __LINE__);
@@ -323,6 +366,12 @@ void The_Glitch::HandleEvents(const SDL_Event& sdlEvent) {
 			wallSegment[i]->setVel(Vec3(-15.0f, 0.0f, 0.0f));
 			Physics::SimpleNewtonMotion(*wallSegment[i], deltaTime);
 			wallSegment[i]->setModelMatrix(MMath::translate(wallSegment[i]->getPos()));
+		
+		}
+		for (int i = 0; i < numDoors; i++) {
+			doors[i]->setVel(Vec3(-15.0f, 0.0f, 0.0f));
+			Physics::SimpleNewtonMotion(*doors[i], deltaTime);
+			doors[i]->setModelMatrix(MMath::translate(doors[i]->getPos()));
 		}
 
 		Debug::Info("Moved Right", __FILE__, __LINE__);
@@ -334,6 +383,16 @@ void The_Glitch::HandleEvents(const SDL_Event& sdlEvent) {
 		//roll
 	}
 	if (sdlEvent.key.keysym.scancode == SDL_SCANCODE_E) {
+
+		for (int i = 0; i < numDoors; i++) {
+			Vec3 temp = doors[i]->getPos();
+			if (temp.y == 2.0f || temp.x == 2.0f || temp.y == -2.0f || temp.x == -2.0f) {
+				doors[i]->openCloseDoor();
+				if (doors[i]->getOpenState()) {
+				
+				}
+			}
+		}
 		//interact
 	}
 
@@ -345,6 +404,9 @@ void The_Glitch::Update(const float deltaTime_) {
 
 	for (int i = 0; i < numWalls; i++) {
 		wallSegment[i]->Update(deltaTime_);
+	}
+	for (int i = 0; i < numDoors; i++) {
+		doors[i]->Update(deltaTime_);
 	}
 }
 
@@ -368,15 +430,20 @@ void The_Glitch::Render() const {
 		glUniformMatrix4fv(wallSegment[i]->getShader()->getUniformID("viewMatrix"), 1, GL_FALSE, camera->getViewMatrix());
 		glUniform3fv(wallSegment[i]->getShader()->getUniformID("lightPos"), 1, lightSource);
 	}
+	for (int i = 0; i < numDoors; i++) {
+		glUniformMatrix4fv(doors[i]->getShader()->getUniformID("projectionMatrix"), 1, GL_FALSE, camera->getProjectionMatrix());
+		glUniformMatrix4fv(doors[i]->getShader()->getUniformID("viewMatrix"), 1, GL_FALSE, camera->getViewMatrix());
+		glUniform3fv(doors[i]->getShader()->getUniformID("lightPos"), 1, lightSource);
+	}
 
 
 	playerModel->Render();
 
 	for (int i = 0; i < numWalls; i++) {
-		Vec3 temp = wallSegment[i]->getPos();
-		if (temp.x < 20 && temp.x > -20 && temp.y < 20 && temp.y > -20) {
 			wallSegment[i]->Render();
-		}
+	}
+	for (int i = 0; i < numDoors; i++) {
+		doors[i]->Render();
 	}
 
 	glUseProgram(0);
