@@ -10,7 +10,6 @@ class PhysicsObject {
 public:
 	PhysicsObject();
 	virtual ~PhysicsObject();
-	
 
 public:
 	/// Untility functions so small they cane be inlined
@@ -24,6 +23,7 @@ public:
 	inline void applyForce(const Vec3 force) { accel = force / mass;  }
 	inline float getAng() { return angle; }
 	inline void applyTorque(const float torque) { angAccel = torque / rotationalI; }
+	inline Sphere getBoundingSphere() { return boundingSphere; }
 protected:
 	Vec3 pos, vel, accel;
 	float rotationalI;

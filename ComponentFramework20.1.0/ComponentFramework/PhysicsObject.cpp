@@ -8,4 +8,3 @@ PhysicsObject::PhysicsObject():pos(0.0f),vel(0.0f),accel(0.0f),mass(1.0f),boundi
 PhysicsObject::~PhysicsObject(){
 
 }
-

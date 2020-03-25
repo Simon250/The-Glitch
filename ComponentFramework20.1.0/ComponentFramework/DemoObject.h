@@ -21,9 +21,12 @@ private:
 	Shader *shader;
 	Texture *texture;
 
+
 public:
 	DemoObject(Mesh *mesh_, Shader *shader_, Texture *texture_);
 	~DemoObject();
+	float distance(DemoObject* object);
+
 	virtual bool OnCreate();
 	virtual void OnDestroy();
 	virtual void Update(const float deltaTime_);

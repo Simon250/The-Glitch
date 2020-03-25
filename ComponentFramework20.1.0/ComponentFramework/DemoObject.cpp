@@ -1,6 +1,7 @@
 #include "DemoObject.h"
 
 #include "MMath.h"
+#include "VMath.h"
 
 DemoObject::DemoObject(Mesh *mesh_, Shader *shader_, Texture *texture_): 
 	mesh(mesh_), shader(shader_), texture(texture_) {
@@ -32,6 +33,15 @@ void DemoObject::Render() const {
 
 	/// Unbind the texture
 	glBindTexture(GL_TEXTURE_2D, 0);
+}
+
+float DemoObject::distance(DemoObject* object)
+{
+	Vec3 r;
+	r.x = pos.x - object->getPos().x;
+	r.y = pos.y - object->getPos().y;
+	r.z = pos.z - object->getPos().z;
+	return VMath::mag(r);
 }
 
 void DemoObject::HandleEvents(const SDL_Event &event) {} /// Just a stub

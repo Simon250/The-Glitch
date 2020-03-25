@@ -1,2 +1,10 @@
-﻿  Door.cpp
-  ComponentFramework.vcxproj -> D:\GGJ2020Inventory(0.2)-master\The-Glitch\ComponentFramework20.1.0\Debug\ComponentFramework.exe
+﻿  Collider.cpp
+F:\Visual Studio Projects\The-Glitch-Collisions\ComponentFramework20.1.0\ComponentFramework\Collider.h(11,64): warning C4042: 'playerObject': has bad storage class
+F:\Visual Studio Projects\The-Glitch-Collisions\ComponentFramework20.1.0\ComponentFramework\Collider.h(11,95): warning C4042: 'wallObject': has bad storage class
+F:\Visual Studio Projects\The-Glitch-Collisions\ComponentFramework20.1.0\ComponentFramework\Collider.h(13,70): warning C4042: 'playerObject': has bad storage class
+F:\Visual Studio Projects\The-Glitch-Collisions\ComponentFramework20.1.0\ComponentFramework\Collider.h(13,104): warning C4042: 'objectArray': has bad storage class
+F:\Visual Studio Projects\The-Glitch-Collisions\ComponentFramework20.1.0\ComponentFramework\Collider.h(13,128): warning C4042: 'direction': has bad storage class
+F:\Visual Studio Projects\The-Glitch-Collisions\ComponentFramework20.1.0\ComponentFramework\Collider.h(14,2): warning C4091: 'static ': ignored on left of 'Collider' when no variable is declared
+F:\Visual Studio Projects\The-Glitch-Collisions\ComponentFramework20.1.0\ComponentFramework\Collider.cpp(3,66): warning C4042: 'playerObject': has bad storage class
+F:\Visual Studio Projects\The-Glitch-Collisions\ComponentFramework20.1.0\ComponentFramework\Collider.cpp(3,97): warning C4042: 'wallObject': has bad storage class
+  ComponentFramework.vcxproj -> F:\Visual Studio Projects\The-Glitch-Collisions\ComponentFramework20.1.0\Debug\ComponentFramework.exe

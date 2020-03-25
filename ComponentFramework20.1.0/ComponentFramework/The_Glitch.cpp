@@ -12,6 +12,7 @@
 #include "MMath.h"
 #include "Debug.h"
 #include "Physics.h"
+#include "Collider.h"
 
 The_Glitch::The_Glitch() : camera(nullptr), playerModel(nullptr), meshPtr1(nullptr), meshPtr2(nullptr), shaderPtr(nullptr), texturePtr(nullptr) {
 	playerSpeed = 10.0f;
@@ -91,11 +92,6 @@ bool The_Glitch::OnCreate() {
 	//front wall
 	wallSegment[10]->setPos(Vec3(0.0f, 2.0f, -10.0f));
 	
-	
-
-
-
-
 	for (int i = 0; i < numWalls; i++) {
 		wallSegment[i]->setModelMatrix(MMath::rotate(0.0f, Vec3(1.0f, 0.0f, 0.0f)) * MMath::scale(0.4f, 0.4f, 0.4f));
 	}
@@ -118,46 +114,104 @@ void The_Glitch::OnDestroy() {
 
 void The_Glitch::HandleEvents(const SDL_Event& sdlEvent) {
 
+	// Move Up
 	if (sdlEvent.key.keysym.scancode == SDL_SCANCODE_W) {
 		playerModel->setModelMatrix(MMath::rotate(90.0f, Vec3(1.0f, 0.0f, 0.0f)) * MMath::scale(0.4f, 0.4f, 0.4f));
 
-		for (int i = 0; i < numWalls; i++) {
-			wallSegment[i]->setVel(Vec3(0.0f, -15.0f, 0.0f));
-			Physics::SimpleNewtonMotion(*wallSegment[i], deltaTime);
-			wallSegment[i]->setModelMatrix(MMath::translate(wallSegment[i]->getPos()));
+		bool collided = false;
+		for (int i = 0; i < numWalls; i++)
+		{
+			if (Collider::CollisionDetection(playerModel, wallSegment[i]) && wallSegment[i]->getPos().y > 0 && wallSegment[i]->getPos().x > -2 && wallSegment[i]->getPos().x < 2)
+			{
+				collided = true;
+			}
+		}
+
+		if (collided == false)
+		{
+			for (int i = 0; i < numWalls; i++)
+			{
+				wallSegment[i]->setVel(Vec3(0.0f, -15.0f, 0.0f));
+				Physics::SimpleNewtonMotion(*wallSegment[i], deltaTime);
+				wallSegment[i]->setModelMatrix(MMath::translate(wallSegment[i]->getPos()));
+			}
 		}
 
 		Debug::Info("Moved Up", __FILE__, __LINE__);
 	}
+
+	// Move Left
 	if (sdlEvent.key.keysym.scancode == SDL_SCANCODE_A) {
 		playerModel->setModelMatrix((MMath::rotate(90.0f, Vec3(1.0f, 0.0f, 0.0f)) * MMath::rotate(90.0f, Vec3(0.0f, 1.0f, 0.0f)) * MMath::scale(0.4f, 0.4f, 0.4f)));
-		
-		for (int i = 0; i < numWalls; i++) {
-			wallSegment[i]->setVel(Vec3(15.0f, 0.0f, 0.0f));
-			Physics::SimpleNewtonMotion(*wallSegment[i], deltaTime);
-			wallSegment[i]->setModelMatrix(MMath::translate(wallSegment[i]->getPos()));
+
+		bool collided = false;
+		for (int i = 0; i < numWalls; i++)
+		{
+			if (Collider::CollisionDetection(playerModel, wallSegment[i]) && wallSegment[i]->getPos().x < 0 && wallSegment[i]->getPos().y > -2 && wallSegment[i]->getPos().y < 2)
+			{
+				collided = true;
+			}
+		}
+
+		if (collided == false)
+		{
+			for (int i = 0; i < numWalls; i++)
+			{
+				wallSegment[i]->setVel(Vec3(15.0f, 0.0f, 0.0f));
+				Physics::SimpleNewtonMotion(*wallSegment[i], deltaTime);
+				wallSegment[i]->setModelMatrix(MMath::translate(wallSegment[i]->getPos()));
+			}
 		}
 
 		Debug::Info("Moved Left", __FILE__, __LINE__);
 	}
+
+	// Move Down
 	if (sdlEvent.key.keysym.scancode == SDL_SCANCODE_S) {
 		playerModel->setModelMatrix((MMath::rotate(90.0f, Vec3(1.0f, 0.0f, 0.0f)) * MMath::rotate(180.0f, Vec3(0.0f, -1.0f, 0.0f)) * MMath::scale(0.4f, 0.4f, 0.4f)));
-		
-		for (int i = 0; i < numWalls; i++) {
-			wallSegment[i]->setVel(Vec3(0.0f, 15.0f, 0.0f));
-			Physics::SimpleNewtonMotion(*wallSegment[i], deltaTime);
-			wallSegment[i]->setModelMatrix(MMath::translate(wallSegment[i]->getPos()));
+
+		bool collided = false;
+		for (int i = 0; i < numWalls; i++)
+		{
+			if (Collider::CollisionDetection(playerModel, wallSegment[i]) && wallSegment[i]->getPos().y < 0 && wallSegment[i]->getPos().x > -2 && wallSegment[i]->getPos().x < 2)
+			{
+				collided = true;
+			}
 		}
 
+		if(collided == false)
+		{
+			for (int i = 0; i < numWalls; i++)
+			{
+				wallSegment[i]->setVel(Vec3(0.0f, 15.0f, 0.0f));
+				Physics::SimpleNewtonMotion(*wallSegment[i], deltaTime);
+				wallSegment[i]->setModelMatrix(MMath::translate(wallSegment[i]->getPos()));
+			}
+		}
 		Debug::Info("Moved Down", __FILE__, __LINE__);
 	}
+
+	// Move Right
 	if (sdlEvent.key.keysym.scancode == SDL_SCANCODE_D) {
 		playerModel->setModelMatrix((MMath::rotate(90.0f, Vec3(1.0f, 0.0f, 0.0f)) * MMath::rotate(90.0f, Vec3(0.0f, -1.0f, 0.0f)) * MMath::scale(0.4f, 0.4f, 0.4f)));
-		
-		for (int i = 0; i < numWalls; i++) {
-			wallSegment[i]->setVel(Vec3(-15.0f, 0.0f, 0.0f));
-			Physics::SimpleNewtonMotion(*wallSegment[i], deltaTime);
-			wallSegment[i]->setModelMatrix(MMath::translate(wallSegment[i]->getPos()));
+
+		bool collided = false;
+		for (int i = 0; i < numWalls; i++)
+		{
+			if (Collider::CollisionDetection(playerModel, wallSegment[i]) && wallSegment[i]->getPos().x > 0 && wallSegment[i]->getPos().y > -2 && wallSegment[i]->getPos().y < 2)
+			{
+				collided = true;
+			}
+		}
+
+		if (collided == false)
+		{
+			for (int i = 0; i < numWalls; i++)
+			{
+				wallSegment[i]->setVel(Vec3(-15.0f, 0.0f, 0.0f));
+				Physics::SimpleNewtonMotion(*wallSegment[i], deltaTime);
+				wallSegment[i]->setModelMatrix(MMath::translate(wallSegment[i]->getPos()));
+			}
 		}
 
 		Debug::Info("Moved Right", __FILE__, __LINE__);
