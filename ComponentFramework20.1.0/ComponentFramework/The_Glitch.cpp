@@ -24,7 +24,7 @@ bool The_Glitch::OnCreate() {
 	numWalls = 165;
 	numDoors = 10;
 	camera = new Camera();
-
+	levelGen = new Level1Gen();
 	if (ObjLoader::loadOBJ("meshes/Mario.obj") == false) {
 		return false;
 	}
@@ -304,6 +304,7 @@ void The_Glitch::OnDestroy() {
 	for (int i = 0; i < numDoors; i++) {
 		if (doors[i]) delete doors[i], doors[i] = nullptr;
 	}
+	if (levelGen) delete levelGen, levelGen = nullptr;
 }
 
 void The_Glitch::HandleEvents(const SDL_Event& sdlEvent) {
@@ -384,12 +385,15 @@ void The_Glitch::HandleEvents(const SDL_Event& sdlEvent) {
 	}
 	if (sdlEvent.key.keysym.scancode == SDL_SCANCODE_E) {
 
+		
 		for (int i = 0; i < numDoors; i++) {
 			Vec3 temp = doors[i]->getPos();
-			if (temp.y == 2.0f || temp.x == 2.0f || temp.y == -2.0f || temp.x == -2.0f) {
+			if (temp.y <= 2.0f && temp.x <= 2.0f && temp.y >= -2.0f && temp.x >= -2.0f) {
+				Debug::Info("Door State Changed", __FILE__, __LINE__);
 				doors[i]->openCloseDoor();
 				if (doors[i]->getOpenState()) {
-				
+					Debug::Info("Room Created", __FILE__, __LINE__);
+					levelGen->RoomPlacement(doors[i]->getDirection(), doors[i]->getPos(), wallSegment[0], doors[0] , i);
 				}
 			}
 		}

@@ -50,8 +50,8 @@ Level1Gen::~Level1Gen() {}
 
 int Level1Gen::RoomGenerations() {
 
-	seed = (long)time(NULL);
-	ran1idnum = -(long)seed;
+	seed = (long)13492;
+	ran1idnum = (long)-13492;
 
 #define IA 16807		/// primitive root modulo M31 7^5
 #define IM 2147483647	/// One of the Mersenne primes: 2^31-1

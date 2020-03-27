@@ -35,6 +35,7 @@ public:
 	Door(Mesh* mesh_, Shader* shader_, Texture* texture_);
 	~Door();
 
+	inline Vec3 getDirection() { return direction; }
 	inline bool getOpenState() { return openState; }
 	bool openCloseDoor();
 	bool OnCreate() override;

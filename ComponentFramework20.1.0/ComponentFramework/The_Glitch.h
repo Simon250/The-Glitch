@@ -5,6 +5,7 @@
 #include "Plane.h"
 #include "WallSegment.h"
 #include "Door.h"
+#include "Level1Gen.h"
 
 using namespace MATH;
 
@@ -35,6 +36,7 @@ private:
 	Texture *texturePtr;
 	float playerSpeed;
 	float deltaTime;
+	Level1Gen *levelGen;
 public:
 	explicit The_Glitch();
 	virtual ~The_Glitch();
