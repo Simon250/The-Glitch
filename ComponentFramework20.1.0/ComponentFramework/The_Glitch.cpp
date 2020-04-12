@@ -65,7 +65,7 @@ bool The_Glitch::OnCreate() {
 			return false;
 		}
 	}
-
+	
 	for (int i = 0; i < numWalls; i++) {
 		wallSegment[i]->setPos(Vec3(100000.0f, 0.0f, -10.0f));
 	}

@@ -1,2 +1,6 @@
-﻿  The_Glitch.cpp
+﻿  GameObject.h
+  Level1Gen.cpp
+  The_Glitch.cpp
+  Generating Code...
+D:\GGJ2020Inventory(0.2)-master\The-Glitch\ComponentFramework20.1.0\ComponentFramework\Level1Gen.cpp(89,10): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
   ComponentFramework.vcxproj -> D:\GGJ2020Inventory(0.2)-master\The-Glitch\ComponentFramework20.1.0\Debug\ComponentFramework.exe
